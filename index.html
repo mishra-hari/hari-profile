@@ -7,7 +7,17 @@
 <body>
     <div id="global-renderer-preview" class="js-document-wrap"><style>
             html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent}
-            body{background:#FFF;text-align:left;display:flex;justify-content:center;align-items:flex-start;margin:0;padding:0;}
+
+            body {
+                background-image: url('assets/image.png');
+                background-size: cover;          /* Forces image to cover the whole screen */
+                background-position: center;     /* Centers the image horizontally and vertically */
+                background-repeat: no-repeat;    /* Prevents the image from tiling */
+                background-attachment: fixed;    /* Keeps the background fixed while scrolling */
+                margin: 0;                       /* Removes default browser spacing */
+                min-height: 100vh;               /* Ensures background spans the full viewport height */
+            }
+
             #global-renderer-preview{margin:0 auto;display:flex;justify-content:center;}
             .js-document-wrap{margin:0 auto;display:inline-flex;justify-content:center;}
             .js-document-wrap .document{margin:0 auto;display:block;transform-origin:center top !important;}
