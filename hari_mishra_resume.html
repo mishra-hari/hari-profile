@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+    <div id="global-renderer-preview" class="js-document-wrap"><style>
+            html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;vertical-align:baseline;background:transparent}
+            body{background:#FFF;text-align:left;display:flex;justify-content:center;align-items:flex-start;margin:0;padding:0;}
+            #global-renderer-preview{margin:0 auto;display:flex;justify-content:center;}
+            .js-document-wrap{margin:0 auto;display:inline-flex;justify-content:center;}
+            .js-document-wrap .document{margin:0 auto;display:block;transform-origin:center top !important;}
+            .js-document-wrap .skn-mng3 table{border-collapse:collapse;border-spacing:0;font-size:inherit;color:inherit;width:100%}
+
+            /*START Image treatment for LI*/
+            .js-document-wrap .skn-mng3 ul{list-style-type:none;padding:0}
+            .js-document-wrap .skn-mng3 li{list-style-type:none;margin:0 0 0 10px;padding:0}
+            .js-document-wrap .skn-mng3 ul li{margin:0 0 0 14px;position:relative}
+            .js-document-wrap .skn-mng3 ul li:before{content:"\2022";position:absolute;left:-13px;top:1px}
+            .js-document-wrap .skn-mng3 .address li,.js-document-wrap .skn-mng3 .address ul{display:inline;margin:0;padding:0;list-style:none}
+            .js-document-wrap .skn-mng3 .address li:before{content:"\2022\0020";vertical-align:bottom}
+            .js-document-wrap .skn-mng3 .address li.first:before{content:""}
+            .js-document-wrap .skn-mng3 .excSmry ul,.js-document-wrap .skn-mng3 .excExp ul{margin-top:5px}
+            .js-document-wrap .skn-mng3 .disp-inblk{display:inline-block}
+
+            /*END Image treatment for LI*/
+
+            .js-document-wrap .skn-mng3 .sprtr + .sprtr,.js-document-wrap .skn-mng3 .educsprtr + .educsprtr{display:none}
+            .js-document-wrap .skn-mng3 span.paddedline{display:block}
+            .js-document-wrap .skn-mng3 .jobtitle,.js-document-wrap .skn-mng3 .degree,.js-document-wrap .skn-mng3 .txt-bold{font-weight:bold}
+            .js-document-wrap .skn-mng3 .table_wrapper{width:100%;margin-top:0}
+            .js-document-wrap .skn-mng3 .nameLogo{text-align:center}
+            .js-document-wrap .skn-mng3 .nameLogo text{text-transform:uppercase}
+            .js-document-wrap .skn-mng3 .sprtr{margin:0 5px;display:inline-block}
+            .js-document-wrap .skn-mng3 .txtItl{font-style:italic}
+            .js-document-wrap .skn-mng3 span.dates_wrapper{display:block;float:left}
+            .js-document-wrap .skn-mng3 .hiltSec{width:100%}
+            .js-document-wrap .skn-mng3 .hiltSec ul li{margin-left:5%}
+            .js-document-wrap .skn-mng3 .social .sprtr{padding-right:2px}
+            .js-document-wrap .skn-mng3 .social .disp-inblk:last-child .sprtr{display:none}
+
+            .js-document-wrap .skn-mng3 .parlrColmn{width:100%;display:table}
+            .js-document-wrap .skn-mng3 .flt-right{float:right}
+            
+            /*Dyanmic BG*/
+            .js-document-wrap .skn-mng3.dynamicbg{position:relative}
+            .js-document-wrap .skn-mng3.dynamicbg:before{background-image:url("");background-repeat:no-repeat;background-position: 0 top;background-size:contain;content:'';position:absolute;left:0;top:0;height:100%}
+            
+            .js-document-wrap .skn-mng3.NewSkins .dynamicIcon + .nameLogo,.js-document-wrap .skn-mng3.RNA:not(.MNG3) .dynamicIcon + .nameLogo{display:none}
+            .js-document-wrap .skn-mng3 .dynamicIcon{margin:auto}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg,.js-document-wrap .skn-mng3 .dynamicIcon img{fill:#fff;height:calc(100% - 10%);width:calc(100% - 10%);margin:auto;vertical-align:middle}
+            .js-document-wrap .skn-mng3 .dynamicIcon > div{height:50px}
+            .js-document-wrap .skn-mng3 .dynamicIcon img{width:calc(100% - 33%)}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg.admin_a *,.js-document-wrap .skn-mng3 .dynamicIcon svg.healthcare_a *{stroke:transparent}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg .st2{fill:inherit}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg.ret_a{fill:#fff!important}
+
+            .js-document-wrap .skn-mng3{color:#4a4a4a;background-color:#fff!important}
+            .js-document-wrap .skn-mng3 .SECTION_CNTC,.js-document-wrap .skn-mng3 .firstsection{border:none;padding:0}
+            .js-document-wrap .skn-mng3 .name{color:#4a4a4a;font-weight:600;font-size:15px;line-height:17px;padding:0;text-align:center}
+            .js-document-wrap .skn-mng3 .sectiontitle,.js-document-wrap .skn-mng3 .resumeTitle,.js-document-wrap .skn-mng3 .execRsmTitle{font-weight:600;display:inline-block;position:relative;z-index:1;background:#FFF;padding:0 10px 0 0}
+            .js-document-wrap .skn-mng3 .profTitle{text-align:center}
+            .js-document-wrap .skn-mng3 .paragraph{position:relative}
+            .js-document-wrap .skn-mng3 .heading,.js-document-wrap .skn-mng3 .resumeTitle,.js-document-wrap .skn-mng3 .execRsmTitle{clear:both;position:relative}
+            .js-document-wrap .skn-mng3 .address{position:relative;text-align:center;font-size:0.917em;line-height:1.25em;margin-top:11px}
+            .js-document-wrap .skn-mng3 .address2{position:relative;text-align:left;font-size:0.917em;line-height:1.25em}
+            .js-document-wrap .skn-mng3 table.twocol td{width:50%}
+            .js-document-wrap .skn-mng3 table.skills th,.js-document-wrap .skn-mng3 table.skills td{width:20%;text-align:center}
+            .js-document-wrap .skn-mng3 table.skills th{text-decoration:underline}
+            .js-document-wrap .skn-mng3 table.skills .skillname,.js-document-wrap .skn-mng3 table.skills .skillrating{text-align:left;width:35%}
+            .js-document-wrap .skn-mng3 table.skills .skillrating{width:20%}
+            .js-document-wrap .skn-mng3 table.skills .skillyears,.js-document-wrap .skn-mng3 table.skills .skilllast{width:19%}
+            .js-document-wrap .skn-mng3 table.skills .pad1{width:5%}
+            .js-document-wrap .skn-mng3 table.skills .pad2,.js-document-wrap .skn-mng3 table.skills .pad3{width:1%}
+            .js-document-wrap .skn-mng3 .wrd-brk{word-break:break-word}
+
+            /*New logic for infographic*/
+            .js-document-wrap .skn-mng3 .lang-sec .infobarpara,.js-document-wrap .skn-mng3 .skli-sec .infobarpara,.js-document-wrap .skn-mng3 .lang-sec .infotilepara,.js-document-wrap .skn-mng3 .skli-sec .infotilepara,.js-document-wrap .skn-mng3 .lang-sec .singlecolumn,.js-document-wrap .skn-mng3 .skli-sec .singlecolumn{display:none}
+            .js-document-wrap .skn-mng3 .lang-sec.infobarsec .infobarpara,.js-document-wrap .skn-mng3 .skli-sec.infobarsec .infobarpara,.js-document-wrap .skn-mng3 .lang-sec.infotilesec .infotilepara,.js-document-wrap .skn-mng3 .skli-sec.infotilesec .infotilepara{display:block}
+        
+            /*Infographic Common*/
+            .js-document-wrap .skn-mng3 .lang-sec,.js-document-wrap .skn-mng3 .skli-sec{font-size:0}
+            .js-document-wrap .skn-mng3 .lang-sec .field p,.js-document-wrap .skn-mng3 .lang-sec .nativeLangPara .field,.js-document-wrap .skn-mng3 .skli-sec .field p{display:inline;word-wrap:break-word}
+            .js-document-wrap .skn-mng3 .lang-sec .paragraph,.js-document-wrap .skn-mng3 .skli-sec .paragraph{display:inline-block;vertical-align:top;padding-bottom:5px;margin-top:0}
+            .js-document-wrap .skn-mng3 .lang-sec .paragraph:nth-last-child(1),.js-document-wrap .skn-mng3 .lang-sec .paragraph:nth-last-child(2),.js-document-wrap .skn-mng3 .skli-sec .paragraph:nth-last-child(1),.js-document-wrap .skn-mng3 .skli-sec .paragraph:nth-last-child(2){padding-bottom:0}
+            .js-document-wrap .skn-mng3 .lang-sec .singlecolumn,.js-document-wrap .skn-mng3 .skli-sec .singlecolumn{margin-left:0!important;position:relative;padding-left:0!important}
+            .js-document-wrap .skn-mng3 .lang-sec .singlecolumn,.js-document-wrap .skn-mng3 .lang-sec .maincolumn,.js-document-wrap .skn-mng3 .skli-sec .singlecolumn,.js-document-wrap .skn-mng3 .skli-sec .maincolumn{width:100%}
+            .js-document-wrap .skn-mng3 .lang-sec .sectiontitle,.js-document-wrap .skn-mng3 .skli-sec .sectiontitle{max-width:100%}
+            .js-document-wrap .skn-mng3 .lang-sec .heading,.js-document-wrap .skn-mng3 .skli-sec .heading{word-wrap:break-word}
+            .js-document-wrap .skn-mng3 .lang-sec ul,.js-document-wrap .skn-mng3 .skli-sec ul{margin-left:0}
+            .js-document-wrap .skn-mng3 .lang-sec li,.js-document-wrap .skn-mng3 .skli-sec li{margin-left:12px}
+            .js-document-wrap .skn-mng3 .nativeLangPara .field:first-child{font-weight:bold}
+            
+            /*Infographic Bar*/
+            .js-document-wrap .skn-mng3 .infobarsec .rating-bar{background:#d5d6d6;width:100%;clear:both;margin-top:3px;position:relative;page-break-inside:avoid}
+            .js-document-wrap .skn-mng3 .infobarsec .inner-rating{background-color:#333;height:4px;position:relative;width:60%}
+        
+            /*Infographic Tile*/
+            .js-document-wrap .skn-mng3 .sliced-rect{height:6px;width:100%;line-height:0px;margin-top:3px;clear:both}
+            .js-document-wrap .skn-mng3 .sliced-rect .sliced-rect-tile{height:100%;background-color:#d5d6d6;float:left;margin-right:3px}
+            .js-document-wrap .skn-mng3 .sliced-rect .sliced-rect-tile:last-child{margin-right:0}
+            /*Rectangular Rating Blocks*/
+            .js-document-wrap .skn-mng3 .hide-bar .rating-bar,.js-document-wrap .skn-mng3 .hide-bar .sliced-rect,.js-document-wrap .skn-mng3 .hide-colon .colon{display:none!important}
+        
+        /*FIX for FORCEFULLY making left margin ZERO for CL*/
+            .js-document-wrap .skn-mng3 .sectionCL .paragraph{margin-top:0!important}
+
+            .js-document-wrap .skn-mng3 .displayNoneThisField{display:none}/* Keep this class always at bottom */
+            .js-document-wrap .skn-mng3 .dynamicIcon img{background-color:#fff!important}
+            
+            /*Button style*/
+            .js-document-wrap .skn-mng3 .section.btnlnk{text-align:center;margin-top:7px;font-size:0;line-height:normal}
+            .js-document-wrap .skn-mng3 .btnlnk .paragraph{display:inline-block;padding-left:10px;margin:0;line-height:15px}
+            .js-document-wrap .skn-mng3 .btnlnk .paragraph:first-child{padding-left:0}
+            .js-document-wrap .skn-mng3 .txtlnk{display:none}
+            .js-document-wrap .skn-mng3:not(.show-btn) .btnlnk{display:none}
+            
+            /*Button SVG*/
+            .js-document-wrap .skn-mng3 .btnlnk a{display:block;width:100%;height:100%;;text-decoration:none;position:relative;text-align:center}
+            .js-document-wrap .skn-mng3 .btnlnk a:before{content:'';background:#000;border-radius:15px;left:0;opacity:.1;position:absolute;height:100%;width:100%;z-index:1}
+            .js-document-wrap .skn-mng3 .btnlnk a:after{content:'';position:absolute;height:100%;width:100%;left:0;background:#fff;border-radius:15px}
+            .js-document-wrap .skn-mng3 .btnlnk svg{width:100%;height:100%;margin:auto;position:relative;z-index:3}
+            .js-document-wrap .skn-mng3 .btnlnk svg text{text-anchor:middle;font-weight:bold;fill:#000;text-align:center;letter-spacing:0.38px}
+
+            /*Personal details section*/
+            .js-document-wrap .skn-mng3 .pdet-sec .singlecolumn{display:flex;justify-content:space-between;flex-wrap:wrap}
+            .js-document-wrap .skn-mng3 .details-wrap{width:49%}
+
+            /*For Extra Space Before Colon*/
+            .js-document-wrap .skn-mng3 .beforecolonspace{display:none !important}
+            .js-document-wrap .skn-mng3.show-colon-space .beforecolonspace{display:inline !important}
+        
+
+            .js-document-wrap .skn-mng3,.js-document-wrap .skn-mng3 table{line-height:15px}
+            .js-document-wrap .skn-mng3.pagesize{width:542px}
+            .js-document-wrap .skn-mng3.fontsize,.js-document-wrap .skn-mng3 .lang-sec.infobarsec .paragraph *,.js-document-wrap .skn-mng3 .lang-sec.infotilesec .paragraph *,.js-document-wrap .skn-mng3 .skli-sec .paragraph *{font-size:12px}
+            .js-document-wrap .skn-mng3.fontface{font-family:Palatino Linotype}
+            .js-document-wrap .skn-mng3.vmargins{padding-top:25px;padding-bottom:25px}
+            .js-document-wrap .skn-mng3.hmargins{padding-left:25px;padding-right:25px}
+            .js-document-wrap .skn-mng3 .section{margin-top:15px;position: relative;}
+            .js-document-wrap .skn-mng3 .sectiontitle,.js-document-wrap .skn-mng3 .resumeTitle,.js-document-wrap .skn-mng3 .execRsmTitle{font-size:12px;color:#4a4a4a;line-height:15px}
+            .js-document-wrap .skn-mng3 .profTitle{font-size:14px;line-height:20px;padding-bottom:5px}
+            .js-document-wrap .skn-mng3 .heading,.js-document-wrap .skn-mng3 .resumeTitle,.js-document-wrap .skn-mng3 .execRsmTitle{margin-bottom:12px}
+            .js-document-wrap .skn-mng3 .heading:before {border-top:1px solid #bcbfc3;content:"";display:block;height:1px;position:absolute;top:50%;width:100%;z-index:1}
+            .js-document-wrap .skn-mng3 .paragraph{margin-top:10px}
+            .js-document-wrap .skn-mng3 .name-sec,.js-document-wrap .skn-mng3 .SECTION_CNTC,.js-document-wrap .skn-mng3 .firstparagraph{margin-top:0}
+            .js-document-wrap .skn-mng3 .singlecolumn,.js-document-wrap .skn-mng3 .maincolumn{margin-left:0px}
+            .js-document-wrap .skn-mng3 table.skills td{padding-top:5px}
+            .js-document-wrap .skn-mng3 .name{font-size:28px;color:#4a4a4a;line-height:40px}
+            .js-document-wrap .skn-mng3 .address{font-size:11px;line-height:13px;margin-top:5px}
+            .js-document-wrap .skn-mng3 .address li:before{font-size:21px;color:#44b3e6;margin-right:-3px}
+            .js-document-wrap .skn-mng3 span.dates_wrapper{width:194px}
+            .js-document-wrap .skn-mng3 .parlrColmn .singlecolumn{margin-left:194px;width:auto}
+            .js-document-wrap .skn-mng3 .parlrColmn .singlecolumn ul li{padding-bottom:2px}
+            .js-document-wrap .skn-mng3 .lang-sec .heading,.js-document-wrap .skn-mng3 .info-sec .heading{font-size:12px}
+            .js-document-wrap .skn-mng3.dynamicbg:before{background-image:url();width:612px}
+            .js-document-wrap .skn-mng3 ul li:before{font-size:10px}
+            
+            
+            /*Button*/
+            .js-document-wrap .skn-mng3.show-btn-gap .name-sec{padding-top:12.5px}
+            .js-document-wrap .skn-mng3.show-btn-gap .SECTION_CNTC{padding-bottom:12.5px}
+            .js-document-wrap .skn-mng3 .btnlnk a:before{background:#4a4a4a}
+            .js-document-wrap .skn-mng3 .btnlnk svg text{fill:#4a4a4a}
+            .js-document-wrap .skn-mng3 .btnlnk .paragraph{width:117px;height:18px}
+
+            .js-document-wrap .skn-mng3 .dynamicIcon,.js-document-wrap .skn-mng3 .nameLogo svg{width:50px;height:50px}
+            .js-document-wrap .skn-mng3 .nameLogo svg > circle{stroke:#4a4a4a!important}
+            .js-document-wrap .skn-mng3 .nameLogo svg > text{fill:#4a4a4a}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg{fill:#4a4a4a}
+            .js-document-wrap .skn-mng3 .dynamicIcon svg *{stroke:#4a4a4a}
+            
+            /*Infographic Common*/
+            .js-document-wrap .skn-mng3 .lang-sec,.js-document-wrap .skn-mng3 .skli-sec{padding-left:0px}
+            .js-document-wrap .skn-mng3 .lang-sec .paragraph,.js-document-wrap .skn-mng3 .skli-sec .paragraph{width:262px}
+            .js-document-wrap .skn-mng3 .infobarsec .inner-rating,.js-document-wrap .skn-mng3 .sliced-rect .sliced-rect-tile.ratvfill{background-color:#4a4a4a}
+            .js-document-wrap .skn-mng3 .lang-sec .heading,.js-document-wrap .skn-mng3 .skli-sec .heading,.js-document-wrap .skn-mng3 .skli-sec .title-edit,.js-document-wrap .skn-mng3 .lang-sec .title-edit{margin-left:-0px}
+            .js-document-wrap .skn-mng3 .lang-sec .nativeLangPara{width:542px;max-width:542px}
+            .js-document-wrap .skn-mng3 .lang-sec .paragraph.para_odd,.js-document-wrap .skn-mng3 .skli-sec .paragraph.para_odd{margin-right:15px}
+    
+            /*Finalize Fixes*/
+            .js-document-wrap .skn-mng3 .lang-sec .sortableInner .sortable-item,.js-document-wrap .skn-mng3 .skli-sec .sortableInner .sortable-item{display:inline-block}
+            .js-document-wrap .skn-mng3 .sortable-item .lang-sec.infobarsec{margin-left:0}
+            .js-document-wrap .skn-mng3 .lang-sec .sortable-item .paragraph, .js-document-wrap .skn-mng3 .skli-sec .sortable-item .paragraph{padding-bottom:5px}
+            .js-document-wrap .skn-mng3 .lang-sec .sortable-item:nth-last-child(1) .paragraph,.js-document-wrap .skn-mng3 .lang-sec .sortable-item:nth-last-child(2) .paragraph,.js-document-wrap .skn-mng3 .skli-sec .sortable-item:nth-last-child(1) .paragraph,.js-document-wrap .skn-mng3 .skli-sec .sortable-item:nth-last-child(2) .paragraph{padding-bottom:0}
+            /*Finalize Fixes*/
+            .js-document-wrap .skn-mng3 .info-sec .sortableInner .sortable-item .paragraph,.js-document-wrap .skn-mng3 .lang-sec .sortableInner .sortable-item + .sortable-item .paragraph{max-width:262px;vertical-align:top}
+            .js-document-wrap .skn-mng3 .SECTION_LNGG .sortableInner .sortable-item{display:inline-block;vertical-align:top}
+            .js-document-wrap .skn-mng3 .SECTION_LNGG .nativeLangPara{width:100%!important;max-width:100%!important;}
+            .js-document-wrap .skn-mng3 .SECTION_LNGG .para_odd{margin-right:15px}
+            .js-document-wrap .skn-mng3 .SECTION_LNGG .nativeLangPara .singlecolumn{width:542px!important;max-width:542px!important}
+            .js-document-wrap .skn-mng3 .SECTION_LNGG .firstparagraph.para_odd{max-width:262px!important}
+            /*For Button*/
+            .js-document-wrap .skn-mng3 .section.btnlnk + .section,.js-document-wrap .skn-mng3 .sortable-item.data-BUTN + .sortable-item .section{margin-top:11px}
+            .js-document-wrap .skn-mng3.RNA.show-btn .name-contact + div .sortable-item:first-child .section,.js-document-wrap .skn-mng3.RNA.show-btn-gap .name-contact + div .sortable-item:first-child .section{margin-top:0 !important}
+            .js-document-wrap .skn-mng3.RNA.show-btn .name-contact,.js-document-wrap .skn-mng3.RNA.show-btn-gap .name-contact{margin-bottom:11px}
+
+            /*FIX for Re-calculating width of singlecolumn for CL*/
+            .js-document-wrap .skn-mng3 .sectionCL{border:none;margin-top:none}
+            .js-document-wrap .skn-mng3 .sectionCL .singlecolumn{margin-left:0!important;width:100%}
+            .js-document-wrap .skn-mng3 .address2{font-size:10px;line-height:13px}
+            
+            /*Rectangular Rating Blocks*/
+            .js-document-wrap .skn-mng3 .paragraph .sliced-rect .sliced-rect-tile.ratvfill{background-color:#4a4a4a}
+
+            .js-document-wrap .skn-mng3.for-pdf .skli-sec ul li:before, .js-document-wrap .skn-mng3.for-pdf .lang-sec ul li:before{left:-13.3px!important}
+        
+
+    .js-document-wrap .document.MNG3 { width: 700px; }
+    </style>
+
+        <div>
+            
+            <div class="document skn-mng3 fontsize fontface vmargins hmargins pagesize dynamicbg MNG3 RNA" docskinwidth="542" data-testid="embd-95CA90b" style="transition: none !important; transform: scale(1.17, 1.17) !important; transform-origin: left top;">
+
+                
+            <div id="SECTION_NAME" class="section name-sec SECTION_NAME" data-section-id="aa892b73-c75e-4a2b-86f9-61aaabb75bea" data-section-type="NAME" data-section-cd="NAME">
+                    <div id="PARAGRAPH_NAME" class="paragraph PARAGRAPH_NAME firstparagraph" data-para-id="43d26dae-cbd4-4ba7-9833-2b4c79774ec3" data-para-index="0">
+                        <!--
+                        <div class="nameLogo" dependency="FNAM|MNAM|LNAM">
+                            <svg viewBox="0 0 50 50" enable-background="0 0 50 50" class="processlogopdf">
+                                <circle cx="25px" cy="25px" r="24px" style="fill:#fff;stroke-width:1;stroke:#4a4a4a"></circle>
+                                <text id="SUBSTR_FALN" text-anchor="middle" x="25px" y="32px" fill="#4a4a4a" font-size="20px" font-weight="900">HP</text>
+                            </svg>
+                        </div>
+                        -->
+                        <div class="name">
+                            <span id="FIELD_FNAM">Hari</span><span dependency="FNAM+MNAM+LNAM" style="display: none;"></span>
+                            <span dependency="MNAM" style="display: none;"><span id="FIELD_MNAM"></span></span>
+                            <span id="FIELD_LNAM">Prapanna Mishra</span>
+                        </div>
+                        <div class="profTitle" dependency="DCTL" style="display: none;"><span id="FIELD_DCTL"></span></div>
+                    </div>
+                </div><div id="SECTION_CNTC" class="section SECTION_CNTC" data-section-id="6010f98d-f8c4-452f-be80-4ca011e27a40" data-section-type="CNTC" data-section-cd="CNTC">
+                    <div id="PARAGRAPH_CNTC" class="paragraph PARAGRAPH_CNTC firstparagraph" data-para-id="af4d9fd5-2eac-47a6-814d-3096bb2ace43" data-para-index="0">
+                        <div class="address">
+                            <span id="FIELD_EMAI">✉ hari.mishra.in@gmail.com</span><span dependency="EMAI"><span class="sprtr" dependency="CPHN|STRT|CITY"> </span><span class="sprtr" dependency="STAT|ZIPC|ADDR"> </span></span>
+                            <span id="FIELD_CPHN">☎ +91 8319245456</span><span dependency="CPHN"><span class="sprtr" dependency="ADDR|STRT|CITY|STAT|ZIPC"> </span></span>
+                            <span id="FIELD_STRT"></span><span dependency="STRT" style="display: none;"><span dependency="CITY|STAT|ZIPC" style="display: none;">, </span></span>
+                            <span class="spaced" id="FIELD_CITY"></span><span dependency="CITY+STAT|ZIPC" style="display: none;">, </span>
+                            <span class="spaced" id="FIELD_STAT"></span><span dependency="STAT+ZIPC" style="display: none;"></span>
+                            <span class="spaced" id="FIELD_ZIPC"></span>
+                            <span id="FIELD_ADDR">⚲ Indore, India 452001</span>
+                            <span dependency="CPHN"><span class="sprtr" dependency="ADDR|STRT|CITY|STAT|ZIPC"> </span></span>
+                            <span dependency="LNK1"><span id="FIELD_LNK1">[in] www.linkedin.com/in/hari-mishra</span></span>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;" id="SECTION_SUMM" class="section SECTION_SUMM" data-section-id="4ae3b794-249a-4083-8f80-99834351832d" data-section-type="SUMM" data-section-cd="SUMM">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_SUMM">Summary</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_SUMM" data-para-id="e010227c-6ea2-4cd6-a506-33c46dca9d53" data-para-index="0">
+                        <div class="singlecolumn" id="FIELD_FRFM"><p>Results-driven Associate Manager and Frontend Architect with 11 years of experience in developing enterprise-scale web applications. Expertise in leading cross-functional engineering teams, designing micro-frontend architectures, and aligning software solutions with business objectives across financial services, telecom, and marketing analytics.</p></div>
+                    </div>
+                </div>
+
+                <div id="SECTION_EXPR" class="section SECTION_EXPR multi-para" data-section-id="247f41b9-1984-4324-93f6-6e4ddaff26ec" data-section-type="EXPR" data-section-cd="EXPR">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_EXPR">Professional Experience</div>
+                    </div>
+                    <div style="margin-left: 5px;" class="paragraph firstparagraph" id="PARAGRAPH_EXPR" data-para-id="e9ed6c61-c90d-4028-be01-0c2c72410688" data-testid="PARAGRAPH_EXPR_e9ed6c61-c90d-4028-be01-0c2c72410688" data-para-index="0">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;"><strong>Omnicom Global Solutions</strong>Pune, India</div>
+                            <div style="display: flex;justify-content: space-between;font-style: italic;">
+                                Associate Manager - Frontend Team Lead
+                                <div>04/2026 - Current</div>
+                            </div>
+                            <ul style="margin-top: 5px;">
+                                <li>Lead, mentor, and build a high-performing frontend team, guiding technical delivery and career progression.</li>
+                                <li>Own architectural decisions, conduct technical feasibility assessments, and define roadmaps for complex marketing analytics suites.</li>
+                                <li>Partner with project owners and stakeholders to translate business requirements into clean technical specifications.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-left: 5px;" class="paragraph" id="PARAGRAPH_EXPR" data-para-id="1ba955d3-e539-4caf-935b-16614b152f9c" data-testid="PARAGRAPH_EXPR_1ba955d3-e539-4caf-935b-16614b152f9c" data-para-index="1">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;"><strong>Omnicom Global Solutions</strong>Pune, India</div>
+                            <div style="display: flex;justify-content: space-between;font-style: italic;">
+                                Engineering Lead
+                                <div>12/2022 - 03/2026</div>
+                            </div>
+                            
+                            <ul style="margin-top: 5px;">
+                                <li>Architected reusable UI component libraries using Lit and Vite, achieving 95%+ code reusability across modules.</li>
+                                <li>Pioneered adoption of next-generation frontend tooling, mono-repo structures, and micro-frontend workflows.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="margin-left: 5px;" class="paragraph" id="PARAGRAPH_EXPR" data-para-id="c8f9dc93-2c9d-4cbc-a787-515ff8dee871" data-testid="PARAGRAPH_EXPR_c8f9dc93-2c9d-4cbc-a787-515ff8dee871" data-para-index="2">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;"><strong>Rakuten Symphony</strong>Indore, India</div>
+                            <div style="display: flex;justify-content: space-between;font-style: italic;">
+                                Technical Lead / Module Lead
+                                <div>02/2015 - 12/2022</div>
+                            </div>
+                            
+                            <ul style="margin-top: 5px;">
+                                <li>Mentored senior engineers, established code quality standards, and ensured on-time feature delivery.</li>
+                                <li>Built full-featured web layers using Angular, optimizing performance and RESTful API integrations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="SECTION_HILT" class="section hiltSec SECTION_HILT" data-section-id="b2bd02ed-1cb6-4372-afcf-26c09bb15441" data-section-type="HILT" data-section-cd="HILT">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_HILT">Skills</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_HILT" data-para-id="d3983c9c-20a7-4159-bc9f-ff4e3f3d2498" data-para-index="0">
+                        <div class="singlecolumn maincolumn">
+                            <table class="twocol">
+                                <tbody><tr>
+                                    <td class="twocol_1" id="FIELD_SKC1">
+                                        <ul>
+                                            <li>JavaScript and TypeScript</li>
+                                            <li>Angular 14+ and Web Components(Lit)</li>
+                                            <li>React</li>
+                                            <li>Micro frontend architecture</li>
+                                            <li>Module federation and single-spa</li>
+                                            <li>HTML5 and CSS3</li>
+                                            <li>Tailwind CSS and Bootstrap</li>
+                                            <li>Vite, Rollup and Webpack</li>
+                                            <li>NPM and Angular CLI</li>
+                                        </ul>
+                                    </td>
+                                    <td class="twocol_2" id="FIELD_SKC2">
+                                        <ul>
+                                            <li>Mono-repo management with NX</li>
+                                            <li>Storybook and RxJS</li>
+                                            <li>Compodoc documentation</li>
+                                            <li>Git and Bitbucket</li>
+                                            <li>Jira project management</li>
+                                            <li>Code reviews assessment</li>
+                                            <li>Cross-functional collaboration</li>
+                                            <li>Conflict resolution strategies</li>
+                                            <li>AI-Assisted Development(GitHub Copilot, Claude Code)</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="SECTION_CUST" class="section SECTION_CUST" data-section-id="e10f88c2-73f9-fec4-5799-27f15f1f5053" data-section-type="CUST" data-section-cd="CUST">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_CUST">Projects</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_CUST" data-para-id="3f9d1372-dd47-4545-83c5-19d4e5d91a80" data-para-index="0">
+                        <div class="singlecolumn" id="FIELD_FRFM">
+                            <ul>
+                                <li style="margin-bottom: 5px;">
+                                    <b>GeoLift Planner</b>: Advanced geo-based lift experiments platform executing advertising impact analysis using synthetic control methodology. Lit, Web Components, Vite, TypeScript, Architected and engineered core UI, simulation engines, and real-time reporting dashboards.
+                                </li>
+                                <li style="margin-bottom: 5px;">
+                                    <b>View Builder</b>: Low-code/no-code enterprise platform enabling dynamic view generation via JSON configurations. Reduced dev time by 70%. Angular, Micro Frontend, NX, Webpack, Module Lead; spearheaded runtime engine and validation layer.
+                                </li>
+                                <li>
+                                    <b>SiteFORGE</b>: Enterprise process automation platform with integrated modules for inventory, logistics, and dashboards. JavaScript, AngularJS, Highcharts, Google Maps, Frontend Developer; optimized cross-device layouts and UI performance.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="SECTION_EDUC" class="section SECTION_EDUC multi-para" data-section-id="588fc79c-9035-486c-b1c1-8e3aa78470d9" data-section-type="EDUC" data-section-cd="EDUC">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_EDUC">Education</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_EDUC" data-para-id="773ffb44-f235-4d7a-91c2-b16611c0ac80" data-para-index="0">
+                        <div class="singlecolumn">
+                            <span class="paddedline" dependency="SCHO|SCIT|SSTA|SCNT">
+                                <span class="companyname" id="FIELD_SCHO">Gyan Ganga Institute of Technologies &amp; Sciences</span><span class="educsprtr" dependency="SCHO+SCIT|SSTA"> | </span><span class="educsprtr" dependency="SCHO+SCNT" style="display: none;"> | </span>
+                                <span class="joblocation jobcity" id="FIELD_SCIT">RGPV</span><span dependency="SCIT+SSTA|SCNT">, </span>
+                                <span class="joblocation jobstate" id="FIELD_SSTA">MP</span><span dependency="SSTA+SCNT" style="display: none;">, </span>
+                                <span class="joblocation jobcountry" id="FIELD_SCNT"></span>
+                            </span>
+                            <span class="paddedline" dependency="STUY|DGRE|GRHN">
+                                <span class="degree" id="FIELD_DGRE">Bachelor of Engineering</span><span dependency="DGRE+STUY"> in </span>
+                                <span class="programline" id="FIELD_STUY">Information Technology</span>
+                                <span dependency="GRHN" style="display: none;"><span dependency="DGRE|STUY"> - </span></span>
+                                <span id="FIELD_GRHN"></span>
+                            </span>
+                            <span class="paddedline txtItl" dependency="GRYR|GRED|GRST|GRIP">
+                                <span class="xslt_static_change displayNoneThisField">Expected in </span><span id="FIELD_GRYR" format="%m/%Y">2010-2014</span>
+                                <span id="FIELD_GRST" format="%m/%Y"></span>
+                                <span dependency="GRST+GRED" style="display: none;"> - </span>
+                                <span id="FIELD_GRED" format="%m/%Y"></span>
+                                <span dependency="GRED|GRST" style="display: none;"><span dependency="GRIP" style="display: none;"> - </span></span>
+                                <span id="FIELD_GRIP"></span>
+                            </span>
+                <span class="paddedline" dependency="GRPA" style="display: none;">
+                    <span dependency="GRPA" style="display: none;">GPA: </span><span id="FIELD_GRPA"></span><br dependency="GRPA" style="display: none;">
+                </span>
+                <span id="FIELD_FRFM"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div id="SECTION_CUST" class="section SECTION_CUST" data-section-id="7acbed3d-df52-e0ba-1027-fbe910ef32ee" data-section-type="CUST" data-section-cd="CUST">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_CUST">Patents And Achievements</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_CUST" data-para-id="c65aa7f8-22d2-4f9f-bdfc-f4ccb7df1a99" data-para-index="0">
+                        <div class="singlecolumn" id="FIELD_FRFM">
+                            <ul>
+                                <li>
+                                    Patent (Issued): Method and apparatus for rendering dynamic user interfaces
+                                    <ul>
+                                        <li>Application No.: PCT/US2022/19221</li>
+                                        <li>Publication No.: <a href="https://patents.google.com/patent/US12210855B2" target="_blank" rel="noopener noreferrer">US12210855B2</a></li>
+                                        <li>Publication Date: 2025-01-28</li>
+                                    </ul>
+                                </li>
+                                <li>Innovation: Designed UI configuration system for dynamic view execution without custom code deployment.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="SECTION_ACCM" class="section SECTION_ACCM" data-section-id="6f57bd78-291b-e3c5-aee4-4c0edb3cd5a1" data-section-type="ACCM" data-section-cd="ACCM">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_ACCM">Accomplishments</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_ACCM" data-para-id="733b57c8-fc1d-5417-ab5d-f8070ab96d27" data-para-index="0">
+                        <div class="singlecolumn" id="FIELD_FRFM"><ul><li>The OG-Star of the Quarter - Technology(10/04/2025)</li><li>The OG-Star of the Quarter - Technology(30/09/2025)</li></ul></div>
+                    </div>
+                </div>
+
+                <div id="SECTION_CUST" class="section SECTION_CUST" data-section-id="b068ebe6-c5cd-c960-e850-fb1c082eb327" data-section-type="CUST" data-section-cd="CUST">
+                    <div class="heading">
+                        <div class="sectiontitle" id="SECTIONNAME_CUST">Languages</div>
+                    </div>
+                    <div class="paragraph firstparagraph" id="PARAGRAPH_CUST" data-para-id="7179b44d-46a7-4812-951f-8a67024e644a" data-para-index="0">
+                        <div class="singlecolumn" id="FIELD_FRFM"><ul><li>English, Fluent</li><li>Hindi, Native</li></ul></div>
+                    </div>
+                </div>
+                
+        </div>
+        </div>
+    </div>
+</body>
+</html>
